@@ -63,7 +63,8 @@ router.get('/bing', async (ctx) => {
 })
 
 router.get('/moyu', async (ctx) => {
-  ctx.response.body = await fetchMoYu(ctx.params.item, ctx.state.type)
+  ctx.response.headers.set('content-type', 'image/png')
+  ctx.response.body = await fetchMoYu()
 })
 
 export default router
