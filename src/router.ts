@@ -1,6 +1,7 @@
 import { Router } from 'oak'
 
 import { fetch60s } from './services/60s.ts'
+import { fetchNew60s } from './services/new60s.ts'
 import { fetchBaike } from './services/baike.ts'
 import { fetchBili } from './services/bili.ts'
 import { fetchBing } from './services/bing.ts'
@@ -20,6 +21,7 @@ const router = new Router()
 const routerMap = {
   '/': fetch60s,
   '/60s': fetch60s,
+  '/new60s': fetchNew60s,
   '/olympic': fetchOlympics,
   '/bili': fetchBili,
   '/weibo': fetchWeibo,

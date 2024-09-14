@@ -1,4 +1,4 @@
-import { wrapperBaseRes } from '../utils.ts'
+const api = 'http://www.wudada.online/Api/ScD'
 
 // 初始化缓存对象
 const cache = new Map()
@@ -35,10 +35,11 @@ function updateCache(value: any) {
   cache.set('data', cacheData)
   cache.set('lastUpdate', now)
 }
-export async function fetchMoYu() {
+
+export async function fetchNew60s() {
   if (shouldUpdateCache()) {
-    const response = await fetch('https://api.vvhan.com/api/moyu')
-    const value = await response.arrayBuffer()
+    const response = await fetch(api)
+    const value = await response.json()
     updateCache(value) // 如果需要更新，则更新缓存
     return value
   } else {
