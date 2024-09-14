@@ -37,12 +37,13 @@ function updateCache(value: any) {
 }
 
 export async function fetchNew60s() {
-  if (shouldUpdateCache()) {
+  const cacheVal = cache.get('data').value
+  if (shouldUpdateCache() || !cacheVal) {
     const response = await fetch(api)
     const value = await response.json()
     updateCache(value) // 如果需要更新，则更新缓存
     return value
   } else {
-    return cache.get('data').value
+    return cacheVal
   }
 }
