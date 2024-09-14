@@ -37,7 +37,7 @@ function updateCache(value: any) {
 }
 
 export async function fetchNew60s() {
-  const cacheVal = cache.get('data').value
+  const cacheVal = cache.get('data')?.value
   if (shouldUpdateCache() || !cacheVal) {
     const response = await fetch(api)
     const value = await response.json()
